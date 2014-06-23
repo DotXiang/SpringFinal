@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" blendMode="SRC_OVER" cache="true" cacheHint="DEFAULT" depthTest="DISABLE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.ziarniak.project.controlers.MainControler">
+  <children>
+    <TabPane fx:id="mainPane" blendMode="DIFFERENCE" layoutX="1.0" layoutY="1.0" prefHeight="537.0" prefWidth="597.0" tabClosingPolicy="UNAVAILABLE">
+      <tabs>
+        <Tab text="Game tab">
+          <content>
+            <SplitPane dividerPositions="0.3869047619047619" focusTraversable="true" orientation="VERTICAL" prefHeight="446.0" prefWidth="600.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="192.0" prefWidth="595.0">
+                  <children>
+                    <Button fx:id="addGameButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#addGameHandler" text="Add Game" />
+                    <Separator layoutX="0.0" layoutY="51.0" prefWidth="598.0" />
+                    <TextField id="myTestTextField" fx:id="gameName" layoutX="129.0" layoutY="68.0" prefWidth="77.0" />
+                    <Label layoutX="27.0" layoutY="69.0" text="Game Name" />
+                    <TextField id="myTestTextField" fx:id="gameMaker" layoutX="129.0" layoutY="99.0" prefWidth="77.0" />
+                    <Label layoutX="27.0" layoutY="101.0" text="Game Maker" />
+                    <Label layoutX="27.0" layoutY="128.0" prefWidth="68.0" text="Game Type" />
+                    <TextField id="myTestTextField" fx:id="gamePrice" layoutX="129.0" layoutY="155.0" prefWidth="77.0" />
+                    <Label layoutX="27.0" layoutY="155.0" text="Game Price" />
+                    <Button fx:id="deleteGameButton" disable="false" layoutX="121.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteGameHandler" text="DeleteGame" />
+                    <ComboBox fx:id="gameTypeComboBox" layoutX="129.0" layoutY="129.0" prefHeight="21.0" prefWidth="77.0" />
+                  </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="263.0" prefWidth="595.0">
+                  <children>
+                    <SplitPane dividerPositions="0.6800670016750419" focusTraversable="true" layoutX="-1.0" layoutY="0.0" prefHeight="306.0" prefWidth="599.0">
+                      <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="262.0" prefWidth="403.0">
+                          <children>
+                            <TableView id="tableView" fx:id="gameTableView" layoutX="14.0" layoutY="14.0" prefHeight="204.0" prefWidth="375.0">
+                              <columns>
+                                <TableColumn prefWidth="75.0" text="ID" />
+                                <TableColumn prefWidth="75.0" text="Name" />
+                                <TableColumn prefWidth="75.0" text="Maker" />
+                                <TableColumn editable="true" prefWidth="75.0" resizable="true" text="Type" />
+                                <TableColumn prefWidth="75.0" text="Price" />
+                              </columns>
+                            </TableView>
+                          </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="305.0" prefWidth="187.99990000000253">
+                          <children>
+                            <Label layoutX="50.0" layoutY="14.0" prefWidth="88.0" text="Selected Row" />
+                            <Label id="selectedRowLabelName" fx:id="selectedRowLabelID" blendMode="SRC_OVER" layoutX="21.0" layoutY="49.0" prefWidth="88.0" text="1" wrapText="false" />
+                            <Label id="selectedRowLabel" fx:id="selectedRowLabelName" layoutX="21.0" layoutY="73.0" prefWidth="88.0" text="2" />
+                            <Label fx:id="selectedRowLabelMaker" layoutX="21.0" layoutY="100.0" prefWidth="88.0" text="3" />
+                            <Label fx:id="selectedRowLabelType" layoutX="21.0" layoutY="125.0" prefWidth="86.0001220703125" text="4" />
+                            <Label fx:id="selectedRowLabelPrice" layoutX="21.0" layoutY="153.0" prefWidth="88.0" text="5" />
+                          </children>
+                        </AnchorPane>
+                      </items>
+                    </SplitPane>
+                  </children>
+                </AnchorPane>
+              </items>
+            </SplitPane>
+          </content>
+        </Tab>
+        <Tab text="Types game tab">
+          <content>
+            <SplitPane dividerPositions="0.5" focusTraversable="true" orientation="VERTICAL" prefHeight="446.0" prefWidth="600.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="102.0" prefWidth="598.0">
+                  <children>
+                    <Button fx:id="addTypeButton" layoutX="122.0" layoutY="14.0" mnemonicParsing="false" onAction="#addTypeHandler" text="Add Type" />
+                    <TextField id="myTestTextField" fx:id="typeName" layoutX="122.0" layoutY="65.0" prefWidth="77.0" />
+                    <Separator layoutX="0.0" layoutY="51.0" prefWidth="598.0" />
+                    <Label layoutX="25.0" layoutY="65.0" text="Type name" />
+                    <Button fx:id="deleteTypeButton" cancelButton="false" disable="true" layoutX="389.0" layoutY="15.0" mnemonicParsing="false" onAction="#deleteTypeHandler" text="DeleteType" wrapText="false" />
+                    <ComboBox id="gameTypeComboBox" fx:id="comboBoxGameTypeDelete" disable="true" layoutX="389.0" layoutY="63.0" prefHeight="21.0" prefWidth="77.0" />
+                    <Separator layoutX="262.0" layoutY="0.0" orientation="VERTICAL" prefHeight="146.0" />
+                    <RadioButton fx:id="addingRadio" layoutX="14.0" layoutY="17.0" mnemonicParsing="false" onAction="#addingModeSelected" selected="true" text="Adding">
+                      <toggleGroup>
+                        <ToggleGroup fx:id="tabMode" />
+                      </toggleGroup>
+                    </RadioButton>
+                    <RadioButton fx:id="deletingRadio" layoutX="274.0" layoutY="17.0" mnemonicParsing="false" onAction="#deletingModeSelected" text="Deleting" toggleGroup="$tabMode" />
+                  </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="219.0001220703125" prefWidth="598.0">
+                  <children>
+                    <SplitPane dividerPositions="" focusTraversable="true" layoutX="-1.0" layoutY="0.0" prefHeight="352.0" prefWidth="599.0">
+                      <items>
+                        <SplitPane id="SplitPane" dividerPositions="0.6789915966386555" prefHeight="350.0" prefWidth="505.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="348.0" prefWidth="494.0">
+                              <children>
+                                <TableView fx:id="typeTableView" layoutX="14.0" layoutY="43.0" prefHeight="204.0" prefWidth="375.0">
+                                  <columns>
+                                    <TableColumn prefWidth="75.0" text="ID" />
+                                    <TableColumn prefWidth="75.0" text="Name" />
+                                    <TableColumn prefWidth="75.0" text="Maker" />
+                                    <TableColumn editable="true" prefWidth="75.0" resizable="true" text="Type" />
+                                    <TableColumn prefWidth="75.0" text="Price" />
+                                  </columns>
+                                </TableView>
+                                <Label layoutX="138.0" layoutY="14.0" prefWidth="117.0" text="Games in type">
+                                  <font>
+                                    <Font size="14.0" fx:id="x1" />
+                                  </font>
+                                </Label>
+                                <RadioButton id="searchRadio" fx:id="searchingRadio" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#searchingModeSelected" text="Search" toggleGroup="$tabMode" />
+                                <ComboBox fx:id="comboBoxGameTypeSearch" disable="true" layoutX="246.0" layoutY="13.0" prefHeight="21.0" prefWidth="98.0">
+                                  <items>
+                                    <FXCollections fx:factory="observableArrayList" />
+                                  </items>
+                                </ComboBox>
+                              </children>
+                            </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="348.0" prefWidth="215.0">
+                              <children>
+                                <Label font="$x1" layoutX="54.0" layoutY="14.0" prefWidth="88.0" text="Selected Row" textAlignment="CENTER" />
+                                <Label id="selectedRowLabelName" fx:id="selectedTypeRowLabelID" blendMode="SRC_OVER" layoutX="21.0" layoutY="49.0" prefWidth="88.0" text="1" wrapText="false" />
+                                <Label id="selectedRowLabel" fx:id="selectedTypeRowLabelName" layoutX="21.0" layoutY="73.0" prefWidth="88.0" text="2" />
+                                <Label id="selectedRowLabelMaker" fx:id="selectedTypeRowLabelMaker" layoutX="21.0" layoutY="100.0" prefWidth="88.0" text="3" />
+                                <Label id="selectedRowLabelType" fx:id="selectedTypeRowLabelType" layoutX="21.0" layoutY="125.0" prefWidth="88.0" text="4" />
+                                <Label id="selectedRowLabelPrice" fx:id="selectedTypeRowLabelPrice" layoutX="21.0" layoutY="153.0" prefWidth="88.0" text="5" />
+                              </children>
+                            </AnchorPane>
+                          </items>
+                        </SplitPane>
+                      </items>
+                    </SplitPane>
+                  </children>
+                </AnchorPane>
+              </items>
+            </SplitPane>
+          </content>
+        </Tab>
+      </tabs>
+    </TabPane>
+  </children>
+</AnchorPane>
