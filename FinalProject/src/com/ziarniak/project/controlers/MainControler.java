@@ -30,6 +30,8 @@ import javafx.stage.Stage;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.ziarniak.project.config.Config;
@@ -37,6 +39,7 @@ import com.ziarniak.project.models.Game;
 import com.ziarniak.project.models.GameType;
 import com.ziarniak.project.service.GameService;
 import com.ziarniak.project.service.GameTypeService;
+import com.ziarniak.project.service.LoggerEvent;
 
 public class MainControler implements Initializable{
 
@@ -72,14 +75,9 @@ public class MainControler implements Initializable{
 	@FXML private ComboBox<String> comboBoxGameTypeDelete;
 	@FXML private Stage stage;
 	// forms
-	
-	@FXML private Button dialogBtnNo;
-	@FXML private Button dialogBtnYes;
-	@FXML private Label errorLabel;
-	
-	
+		
 	@FXML private TabPane mainPane;
-	
+	@Autowired private ApplicationEventPublisher publisher;
 	final ObservableList<Game> data=FXCollections.observableArrayList();
 	final ObservableList<Game> dataOnTypeTabView=FXCollections.observableArrayList();
 	
@@ -90,12 +88,13 @@ public class MainControler implements Initializable{
 		 @SuppressWarnings("resource")
 		AnnotationConfigApplicationContext context= new AnnotationConfigApplicationContext();
 		context.getEnvironment().setActiveProfiles("postgres");
-		//context.getEnvironment().setActiveProfiles("file");
-	//  System.setProperty("spring.profiles.active", "file");
+		/*context.getEnvironment().setActiveProfiles("file");
+	    System.setProperty("spring.profiles.active", "file");
+	    System.setProperty("spring.profiles.active", "file");
+		ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");*/
 		context.register(Config.class);
 		context.refresh();
-		// System.setProperty("spring.profiles.active", "file");
-		//ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
+	
 		
 		 gameService=context.getBean(GameService.class);
 		 gameTypeService=context.getBean(GameTypeService.class);
@@ -127,8 +126,9 @@ public class MainControler implements Initializable{
 
 		@Override
 		public void handle(Event event) {
-			if (!gameTableView.getSelectionModel().isEmpty())
+			if (!gameTableView.getSelectionModel().isEmpty()){
 				selected();
+			}
 			
 		}
 		
@@ -191,10 +191,12 @@ public class MainControler implements Initializable{
 				temp+=cons.getMessage()+"\n";	
 	        }
 			DialogResponse response= Dialogs.showErrorDialog(stage, temp, "Error Dialog", "Game add Error");
-			if(response==DialogResponse.OK)mainPane.setDisable(false);
+			if(response==DialogResponse.OK){
+				mainPane.setDisable(false);
+			}
 			
 		} catch (NumberFormatException | IOException e ) {
-		System.out.println(e.getStackTrace());	
+			publisher.publishEvent(new LoggerEvent(this,e.getStackTrace().toString()));
 		}
 
 	}
