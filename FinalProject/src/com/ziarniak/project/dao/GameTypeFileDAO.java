@@ -22,7 +22,7 @@ import com.ziarniak.project.service.LoggerEvent;
 public class GameTypeFileDAO implements GameTypeDAO{
 
 	@Autowired private ApplicationEventPublisher publisher;
-	private final static String PATH_TO_FILE="gamesType.txt";
+	private static final String PATH_TO_FILE="gamesType.txt";
 	private ArrayList<GameType> gameTypes=new ArrayList<GameType>();
 	
 	
@@ -34,8 +34,9 @@ public class GameTypeFileDAO implements GameTypeDAO{
 	@Override
 	public GameType getGameType(String name) {
 		for(GameType gameType:gameTypes){
-			if(gameType.getName().equalsIgnoreCase(name))
+			if(gameType.getName().equalsIgnoreCase(name)){
 				return gameType;
+			}
 		}
 		publisher.publishEvent(new LoggerEvent(this,"No this gameType "+ name + " found"));
 		return null;
@@ -57,8 +58,9 @@ public class GameTypeFileDAO implements GameTypeDAO{
 	@Override
 	public void deleteGameType(String gameTypeName) {
 		for(GameType gameType:gameTypes){
-			if(gameType.getName().equalsIgnoreCase(gameTypeName))
+			if(gameType.getName().equalsIgnoreCase(gameTypeName)){
 				this.gameTypes.remove(gameType);
+			}
 		}
 		try {
 			this.writeGameTypes();
@@ -86,10 +88,11 @@ public class GameTypeFileDAO implements GameTypeDAO{
 	private void readGameTypes() throws IOException, ClassNotFoundException {
 		if (new File(PATH_TO_FILE).exists()){ 
 			ObjectInputStream in=new ObjectInputStream(new FileInputStream(new File(PATH_TO_FILE)));
-			if(in!=null)
+			if(in!=null){
 			this.gameTypes=(ArrayList<GameType>) in.readObject();
 			in.close();
 			publisher.publishEvent(new LoggerEvent(this,"Readed " + gameTypes.size() + " gamesType from file"));
+			}
 		}
 	}
 

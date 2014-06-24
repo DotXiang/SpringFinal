@@ -23,7 +23,7 @@ public class GameFileDAO implements GameDAO{
 	@Autowired private ApplicationEventPublisher publisher;
 	
 	
-	private final static String PATH_TO_FILE="games.txt";
+	private static final String PATH_TO_FILE="games.txt";
 	
 	private ArrayList<Game> games=new ArrayList<Game>();
 	
@@ -47,8 +47,9 @@ public class GameFileDAO implements GameDAO{
 	@Override
 	public Game getGame(String name) {	
 		for(Game game:this.games){
-			if(game.getName().equalsIgnoreCase(name))
+			if(game.getName().equalsIgnoreCase(name)){
 				return game;
+			}
 		}
 		publisher.publishEvent(new LoggerEvent(this,"No this game "+ name + " found"));
 		return null;
@@ -63,10 +64,11 @@ public class GameFileDAO implements GameDAO{
 	private void readGames() throws IOException, ClassNotFoundException {
 		if (new File(PATH_TO_FILE).exists()){ 
 			ObjectInputStream in=new ObjectInputStream(new FileInputStream(new File(PATH_TO_FILE)));
-			if(in!=null)
-			this.games=(ArrayList<Game>) in.readObject();
-			in.close();
-			publisher.publishEvent(new LoggerEvent(this,"Readed " + games.size() + " games from file"));
+			if(in!=null){
+				this.games=(ArrayList<Game>) in.readObject();
+				in.close();
+				publisher.publishEvent(new LoggerEvent(this,"Readed " + games.size() + " games from file"));
+			}
 		}
 	}
 
