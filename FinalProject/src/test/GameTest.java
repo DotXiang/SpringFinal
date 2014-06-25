@@ -13,8 +13,8 @@ public class GameTest {
 	public void setUp() throws Exception {
 		game=new Game("StarCraft", "Blizzard", "Strategy", "200");
 	}
-
-
+	
+	
 		@Test
 		public void test() {
 			Assert.notNull(game);
