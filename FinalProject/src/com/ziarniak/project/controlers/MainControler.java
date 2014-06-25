@@ -95,9 +95,9 @@ public class MainControler implements Initializable{
 		context.register(Config.class);
 		context.refresh();
 	
-		
 		 gameService=context.getBean(GameService.class);
 		 gameTypeService=context.getBean(GameTypeService.class);
+		
 		 refreshData();
 		 initDataPresent();
 	     
