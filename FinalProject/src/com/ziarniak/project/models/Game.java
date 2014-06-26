@@ -14,7 +14,7 @@ public class Game implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private Long id;
-	@Unique(value = Game.class, property = "name")
+	//@Unique(value = Game.class, property = "name")
 	@Size(min = 1, max = 30)
 	private String name;
 	@Size(min = 1, max = 30)
