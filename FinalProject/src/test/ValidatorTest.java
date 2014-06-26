@@ -22,6 +22,7 @@ public class ValidatorTest {
 	private Game game;
 	@Before
 	public void setUp() throws Exception {
+		game=new Game();
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
 	}

@@ -16,7 +16,7 @@ public class GameTest {
 	
 	
 		@Test
-		public void test() {
+		public void isTrueIsGameIsNotNull() {
 			Assert.notNull(game);
 			
 		}
