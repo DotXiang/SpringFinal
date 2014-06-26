@@ -15,7 +15,7 @@ public class LibraryOfGameApp extends Application {
 	public void start(Stage primaryStage) throws IOException {
 	
 		
-		AnchorPane page = (AnchorPane) FXMLLoader.load(LibraryOfGameApp.class.getResource("../views/Test.fxml"));
+		AnchorPane page = (AnchorPane) FXMLLoader.load(LibraryOfGameApp.class.getResource("../views/MainApp.fxml"));
 		
 		Scene scene = new Scene(page);
 
