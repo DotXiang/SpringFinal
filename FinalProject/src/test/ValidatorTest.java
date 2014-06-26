@@ -66,8 +66,8 @@ public class ValidatorTest {
 		
 		game.setName("StarCraft");
 		game.setMaker("Blizzard");
-		game.setType("Strategy");
-		game.setPrice("200");
+		game.setType("");
+		game.setPrice("202");
 		Set<ConstraintViolation<Game>> constraintViolations = validator.validate(game);
 		Assert.assertFalse(constraintViolations.size() == NO_ERRORS);	
 	
