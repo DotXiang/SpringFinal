@@ -94,7 +94,7 @@ public class MainControler implements Initializable{
 		ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");*/
 		context.register(Config.class);
 		context.refresh();
-	
+		typeName.setText("zosia");
 		 gameService=context.getBean(GameService.class);
 		 gameTypeService=context.getBean(GameTypeService.class);
 		
@@ -134,7 +134,7 @@ public class MainControler implements Initializable{
 		
 		
 	}
-	@FXML private void deleteGameHandler(ActionEvent event){	
+	@FXML protected void deleteGameHandler(ActionEvent event){	
 				
 				if(!gameTableView.getSelectionModel().isEmpty()){
 					Game selectedGame=selected();
@@ -151,14 +151,14 @@ public class MainControler implements Initializable{
 				}	
 	}
 	
-	@FXML private void addTypeHandler(ActionEvent event){		
+	@FXML protected void addTypeHandler(ActionEvent event){		
 				GameType gameType=new GameType();
 				gameType.setName(typeName.getText());
 				gameTypeService.addGameType(gameType);	
 				 refreshData();
 	}
 	
-	@FXML private void deleteTypeHandler(ActionEvent event){
+	@FXML protected void deleteTypeHandler(ActionEvent event){
 		mainPane.setDisable(true);
 	
 		DialogResponse response = Dialogs.showConfirmDialog(stage, 
@@ -173,7 +173,7 @@ public class MainControler implements Initializable{
 	}
 	
 	
-	@FXML private void addGameHandler(ActionEvent event) {
+	@FXML protected void addGameHandler(ActionEvent event) {
 
 		try {
 			Game game = new Game(gameName.getText(), gameMaker.getText(),
@@ -202,7 +202,7 @@ public class MainControler implements Initializable{
 	}
 	
 	
-	@FXML private void addingModeSelected(){
+	@FXML protected void addingModeSelected(){
 		addTypeButton.setDisable(false);
 		typeName.setDisable(false);
 		deleteTypeButton.setDisable(true);
@@ -210,7 +210,7 @@ public class MainControler implements Initializable{
 		comboBoxGameTypeSearch.setDisable(true);
 	}
 	
-	@FXML private void deletingModeSelected(){
+	@FXML protected void deletingModeSelected(){
 		addTypeButton.setDisable(true);
 		typeName.setDisable(true);
 		deleteTypeButton.setDisable(false);
@@ -220,7 +220,7 @@ public class MainControler implements Initializable{
 	}
 	
 	
-	@FXML private void searchingModeSelected(){
+	@FXML protected void searchingModeSelected(){
 		addTypeButton.setDisable(true);
 		typeName.setDisable(true);
 		deleteTypeButton.setDisable(true);
