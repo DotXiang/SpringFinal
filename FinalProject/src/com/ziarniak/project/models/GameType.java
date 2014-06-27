@@ -15,7 +15,7 @@ public class GameType implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String name;
-	private ArrayList<Game>listOfGames;
+	private List<Game>listOfGames;
 	
 	
 	public GameType() {
@@ -26,7 +26,7 @@ public class GameType implements Serializable{
 		this.id = id;
 		this.name = name;
 	}
-	public GameType(Long id, String name, ArrayList<Game> listOfGames) {
+	public GameType(Long id, String name, List<Game> listOfGames) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -38,7 +38,7 @@ public class GameType implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public ArrayList<Game> getListOfGames() {
+	public List<Game> getListOfGames() {
 		return listOfGames;
 	}
 	public void setListOfGames(List<Game> list) {

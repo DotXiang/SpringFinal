@@ -63,9 +63,7 @@ public class MainControler implements Initializable{
 	@FXML private ComboBox<String> gameTypeComboBox;
 	// Type game tab view
 	
-	@FXML private RadioButton addingRadio;
-	@FXML private RadioButton deletingRadio;
-	@FXML private RadioButton searchingRadio;
+
 	
 	@FXML private Button addTypeButton;
 	@FXML private Button deleteTypeButton;

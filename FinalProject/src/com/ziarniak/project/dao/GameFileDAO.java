@@ -25,7 +25,7 @@ public class GameFileDAO implements GameDAO{
 	
 	private static final String PATH_TO_FILE="games.txt";
 	
-	private ArrayList<Game> games=new ArrayList<Game>();
+	private List<Game> games=new ArrayList<Game>();
 	
 	
 	@PostConstruct

@@ -23,7 +23,7 @@ public class GameTypeFileDAO implements GameTypeDAO{
 
 	@Autowired private ApplicationEventPublisher publisher;
 	private static final String PATH_TO_FILE="gamesType.txt";
-	private ArrayList<GameType> gameTypes=new ArrayList<GameType>();
+	private List<GameType> gameTypes=new ArrayList<GameType>();
 	
 	
 	@PostConstruct

@@ -20,11 +20,15 @@ public class MessagerAspect {
 	
 	@Pointcut("execution(* com.ziarniak.project.service.GameService+.*addGame*(..))")
 	public void pointcutAddingGame()
-	{}
+	{
+		
+	}
 	
 	@Pointcut("execution(* com.ziarniak.project.dao.GameDAO.getAllGames(..))")
 	public void pointcutReadingGames()
-	{}
+	{
+		
+	}
 	
 		
 	@Around("pointcutAddingGame() && args(game)")
@@ -39,9 +43,9 @@ public class MessagerAspect {
         
         throw new ConstraintViolationException(constraintViolations);
         }else{	 
-        		 Object ret= point.proceed();
-        		 System.out.println(ret.toString());
-    			System.out.println("Game added : "+game);
+        		 point.proceed();
+        		
+    			
         }
         	
         
