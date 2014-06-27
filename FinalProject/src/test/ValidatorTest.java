@@ -31,7 +31,7 @@ public class ValidatorTest {
 	public void itsReturnTrueWhenGameIsCorrectlyFilled() {
 		
 		game.setName("StarCraft");
-		game.setMaker("Blizzard");
+		game.setMaker("");
 		game.setType("Strategy");
 		game.setPrice("200");
 		Set<ConstraintViolation<Game>> constraintViolations = validator.validate(game);
